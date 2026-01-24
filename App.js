@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/native';
 import { Button } from '@react-navigation/elements';
 import { createStackNavigator } from '@react-navigation/stack';
+import WoodenButton from './src/components/WoodenButton.jsx'
 
 function HomeScreen() {
   const navigation = useNavigation();
@@ -16,8 +17,18 @@ function HomeScreen() {
       <Button onPress={() => navigation.navigate('Settings')}>
         Go to Settings
       </Button>
+
+      <WoodenButton
+        title = "huzzah"
+        onPressFunction = {testPress}
+        >
+      </WoodenButton>
     </View>
   );
+}
+
+function testPress(){
+  console.log("test")
 }
 
 function SettingsScreen() {
