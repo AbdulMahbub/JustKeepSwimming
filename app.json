@@ -24,12 +24,6 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "9a5a25db-12e1-4389-b4d0-e224c8eb2eab"
-      }
-    },
-    "owner": "abdulmahbub"
+    }
   }
 }
