@@ -1,53 +1,28 @@
-import * as React from 'react';
-import { Text, View } from 'react-native';
-import {
-  createStaticNavigation,
-  useNavigation,
-} from '@react-navigation/native';
-import { Button } from '@react-navigation/elements';
-import { createStackNavigator } from '@react-navigation/stack';
-import WoodenButton from './src/components/WoodenButton.jsx'
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 
-function HomeScreen() {
-  const navigation = useNavigation();
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen.jsx";
+import SettingsScreen from "./src/screens/SettingsScreen.jsx";
 
+const Stack = createStackNavigator();
+
+const MyStack = () => {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button onPress={() => navigation.navigate('Settings')}>
-        Go to Settings
-      </Button>
-
-      <WoodenButton
-        title = "huzzah"
-        onPressFunction = {testPress}
-        >
-      </WoodenButton>
-    </View>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Home"
+    >
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Settings" component={SettingsScreen} />
+    </Stack.Navigator>
   );
-}
-
-function testPress(){
-  console.log("test")
-}
-
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Settings Screen</Text>
-    </View>
-  );
-}
-
-const MyStack = createStackNavigator({
-  screens: {
-    Home: HomeScreen,
-    Settings: SettingsScreen,
-  },
-});
-
-const Navigation = createStaticNavigation(MyStack);
+};
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+  );
 }
